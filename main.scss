@@ -33,16 +33,19 @@ body {
   }
 }
 
-.top-nav {
+nav,
+footer {
   margin: 2.5rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   ul {
     list-style: none;
     display: flex;
     justify-content: space-between;
   }
+}
 
+.top-nav {
+  grid-template-columns: repeat(3, 1fr);
   &__toggle {
     margin-left: auto;
   }
@@ -58,6 +61,7 @@ main {
   align-self: center;
   grid-column: 2 / span 1;
 }
+
 .subtext {
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
@@ -78,7 +82,7 @@ form {
   transform: translateY(10px);
   input,
   button {
-    color: #fff;
+    color: $white;
     height: 2.5rem;
     width: 100%;
     border: 1px solid #848485;
@@ -107,4 +111,20 @@ form {
     color: #fff;
     margin-top: 5px;
   }
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  font-size: 0.8rem;
+}
+
+.rights {
+  grid-column: 1 / span 1;
+}
+
+.bottom-nav {
+  grid-column: 2 / span 1;
+  display: flex;
+  text-transform: uppercase;
 }
