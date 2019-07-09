@@ -10,7 +10,7 @@ html {
   height: 100vh; }
 
 body {
-  background: url(/bg.jpg) no-repeat center center fixed;
+  background: url(/cover.jpg) no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   height: 100%;
