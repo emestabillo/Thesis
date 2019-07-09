@@ -2,7 +2,8 @@ $overlay: #121215;
 $white: #fff;
 $blue: #2c99ed;
 
-$bp-medium: 600px;
+$bp-small: 600px;
+$bp-medium: 768px;
 
 //Global reset including pseudo elements
 *,
@@ -82,7 +83,7 @@ nav {
       }
     }
 
-    @media screen and (max-width: $bp-medium) {
+    @media screen and (max-width: $bp-small) {
       display: none;
       position: absolute;
       top: 13%;
@@ -126,34 +127,58 @@ nav {
 }
 
 main {
+  margin: 0 5rem;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  grid-template-areas:
+    "description form"
+    "description form";
+
+  @media screen and (max-width: $bp-medium) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      "description"
+      "form";
+  }
 }
 
-.heading {
-  align-self: center;
-  grid-column: 2 / span 1;
-}
+.description {
+  grid-area: description;
 
-.subtext {
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
+  @media screen and (max-width: $bp-medium) {
+    text-align: center;
+  }
+
+  &__heading {
+    font-size: 3rem;
+    padding-top: 1rem;
+  }
+
+  &__subtext {
+    margin-top: 1rem;
+    font-weight: normal;
+  }
 }
 
 .signup {
-  grid-column: 4 / span 1;
+  grid-area: form;
+
+  @media screen and (max-width: $bp-medium) {
+    justify-self: center;
+  }
 
   &__header {
     text-align: center;
     text-transform: uppercase;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
+    letter-spacing: 1px;
   }
 }
 
 form {
-  transform: translateY(10px);
   input,
   button {
     color: $white;
@@ -167,23 +192,26 @@ form {
   button {
     background: $blue;
   }
-}
 
-.label {
-  padding: 0.5rem;
+  .label {
+    padding: 0.5rem;
+  }
+
+  @media screen and (max-width: $bp-medium) {
+    width: 60vw;
+  }
 }
 
 .tos {
   align-self: center;
   text-align: center;
-  grid-column: 4 / span 1;
-  grid-row: 2 / span 1;
   color: #7c7c7d;
+  margin-top: 1rem;
 
   &__terms {
     text-align: center;
     color: #fff;
-    margin-top: 5px;
+    margin-top: 0.5rem;
   }
 }
 
