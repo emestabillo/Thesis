@@ -119,6 +119,7 @@ main {
         font-size: 1.5rem; } }
   .description__subtext {
     margin-top: 1rem;
+    margin-right: 2rem;
     font-weight: normal; }
     @media screen and (max-width: 768px) {
       .description__subtext {
@@ -183,7 +184,8 @@ footer {
       grid-template-areas: "nav" "rights"; } }
 
 .rights {
-  grid-area: rights; }
+  grid-area: rights;
+  line-height: 2.5rem; }
   @media screen and (max-width: 768px) {
     .rights {
       text-align: center; } }
