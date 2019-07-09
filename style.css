@@ -10,7 +10,7 @@ html {
   height: 100vh; }
 
 body {
-  background: url(bg.jpg) no-repeat center center fixed;
+  background: url(/assets/bg.jpg) no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   height: 100%;
@@ -40,24 +40,56 @@ footer {
   footer a {
     color: #fff;
     text-decoration: none; }
-    nav a:hover,
-    footer a:hover {
-      color: #2c99ed; }
+
+nav {
+  grid-template-areas: "logo item item toggle"; }
 
 .top-nav {
-  grid-template-columns: 1fr 2fr 1fr; }
+  height: 2rem;
+  align-items: flex-end;
+  line-height: 2.5rem; }
   .top-nav__logo {
-    font-weight: bold; }
+    grid-area: logo;
+    font-weight: bold;
+    font-size: 1.7rem; }
   .top-nav__items {
-    justify-content: space-around; }
+    grid-area: item; }
+    .top-nav__items li {
+      width: 25%;
+      text-align: center; }
+      .top-nav__items li:hover {
+        background: #2c99ed; }
+    @media screen and (max-width: 600px) {
+      .top-nav__items {
+        display: none;
+        position: absolute;
+        top: 13%;
+        left: 0px;
+        right: 0px;
+        z-index: 1;
+        font-size: 1.6rem;
+        background: gray;
+        text-align: center; }
+        .top-nav__items li {
+          width: 100%; }
+          .top-nav__items li:hover {
+            background: #2c99ed; } }
   .top-nav__toggle {
-    margin-left: auto; }
-    .top-nav__toggle--bar {
-      width: 1.5rem;
-      height: 3px;
-      background-color: #fff;
-      margin: 5px 0;
-      border-radius: 2px; }
+    grid-area: toggle;
+    margin-left: auto;
+    font-size: 1.8rem;
+    width: 2.5rem;
+    text-align: center; }
+    .top-nav__toggle:hover {
+      cursor: pointer;
+      background: #2c99ed; }
+
+.active {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  width: 100%;
+  margin: auto; }
 
 main {
   display: grid;

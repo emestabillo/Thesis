@@ -2,6 +2,8 @@ $overlay: #121215;
 $white: #fff;
 $blue: #2c99ed;
 
+$bp-medium: 600px;
+
 //Global reset including pseudo elements
 *,
 *::before,
@@ -17,7 +19,7 @@ html {
 }
 
 body {
-  background: url(bg.jpg) no-repeat center center fixed;
+  background: url(/assets/bg.jpg) no-repeat center center fixed;
   background-size: cover;
   color: $white;
   height: 100%;
@@ -50,39 +52,77 @@ footer {
   a {
     color: $white;
     text-decoration: none;
+  }
+}
+
+nav {
+  grid-template-areas: "logo item item toggle";
+}
+
+.top-nav {
+  height: 2rem;
+  align-items: flex-end;
+  line-height: 2.5rem;
+
+  &__logo {
+    grid-area: logo;
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+
+  &__items {
+    grid-area: item;
+
+    li {
+      width: 25%;
+      text-align: center;
+
+      &:hover {
+        background: $blue;
+      }
+    }
+
+    @media screen and (max-width: $bp-medium) {
+      display: none;
+      position: absolute;
+      top: 13%;
+      left: 0px;
+      right: 0px;
+      z-index: 1;
+      font-size: 1.6rem;
+      background: gray;
+      text-align: center;
+
+      li {
+        width: 100%;
+
+        &:hover {
+          background: $blue;
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    grid-area: toggle;
+    margin-left: auto;
+    font-size: 1.8rem;
+    width: 2.5rem;
+    text-align: center;
 
     &:hover {
-      color: $blue;
+      cursor: pointer;
+      background: $blue;
     }
   }
 }
 
-.top-nav {
-  grid-template-columns: 1fr 2fr 1fr;
-
-  &__logo {
-    font-weight: bold;
-  }
-
-  &__items {
-    justify-content: space-around;
-  }
-
-  &__toggle {
-    margin-left: auto;
-
-    &--bar {
-      width: 1.5rem;
-      height: 3px;
-      background-color: $white;
-      margin: 5px 0;
-      border-radius: 2px;
-
-      // &:hover {
-      //   background-color: $blue;
-      // }
-    }
-  }
+.active {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  width: 100%;
+  margin: auto;
 }
 
 main {
