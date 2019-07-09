@@ -30,7 +30,7 @@ body {
 
 nav,
 footer {
-  margin: 2.5rem;
+  padding: 1.5rem 2rem;
   display: grid; }
   nav ul,
   footer ul {
@@ -83,6 +83,9 @@ nav {
     .top-nav__toggle:hover {
       cursor: pointer;
       background: #2c99ed; }
+    @media screen and (min-width: 600px) {
+      .top-nav__toggle {
+        pointer-events: none; } }
 
 .active {
   display: flex;
@@ -111,9 +114,16 @@ main {
   .description__heading {
     font-size: 3rem;
     padding-top: 1rem; }
+    @media screen and (max-width: 768px) {
+      .description__heading {
+        font-size: 1.5rem; } }
   .description__subtext {
     margin-top: 1rem;
     font-weight: normal; }
+    @media screen and (max-width: 768px) {
+      .description__subtext {
+        margin-top: 0;
+        font-size: 0.9rem; } }
 
 .signup {
   grid-area: form; }
@@ -139,6 +149,10 @@ form input {
 
 form button {
   background: #2c99ed; }
+  form button:hover {
+    background-color: #6bafe3;
+    font-weight: bold;
+    cursor: pointer; }
 
 form .label {
   padding: 0.5rem; }
@@ -146,6 +160,9 @@ form .label {
 @media screen and (max-width: 768px) {
   form {
     width: 60vw; } }
+
+.eye {
+  margin-left: -25px; }
 
 .tos {
   align-self: center;
@@ -159,14 +176,25 @@ form .label {
 
 footer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  font-size: 0.7rem; }
+  grid-template-areas: "rights nav";
+  font-size: 0.8rem; }
+  @media screen and (max-width: 768px) {
+    footer {
+      grid-template-areas: "nav" "rights"; } }
 
 .rights {
-  grid-column: 1 / span 2; }
+  grid-area: rights; }
+  @media screen and (max-width: 768px) {
+    .rights {
+      text-align: center; } }
 
 .bottom-nav {
-  grid-column: 4 / span 2;
+  grid-area: nav;
   display: flex;
-  text-transform: uppercase;
-  justify-content: space-between; }
+  text-transform: uppercase; }
+  .bottom-nav li {
+    line-height: 2.5rem;
+    width: 25%;
+    text-align: center; }
+    .bottom-nav li:hover {
+      background: #2c99ed; }

@@ -44,7 +44,7 @@ body {
 
 nav,
 footer {
-  margin: 2.5rem;
+  padding: 1.5rem 2rem;
   display: grid;
   ul {
     list-style: none;
@@ -115,6 +115,10 @@ nav {
       cursor: pointer;
       background: $blue;
     }
+
+    @media screen and (min-width: $bp-small) {
+      pointer-events: none;
+    }
   }
 }
 
@@ -154,11 +158,20 @@ main {
   &__heading {
     font-size: 3rem;
     padding-top: 1rem;
+
+    @media screen and (max-width: $bp-medium) {
+      font-size: 1.5rem;
+    }
   }
 
   &__subtext {
     margin-top: 1rem;
     font-weight: normal;
+
+    @media screen and (max-width: $bp-medium) {
+      margin-top: 0;
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -189,8 +202,15 @@ form {
   input {
     background: transparent;
   }
+
   button {
     background: $blue;
+
+    &:hover {
+      background-color: #6bafe3;
+      font-weight: bold;
+      cursor: pointer;
+    }
   }
 
   .label {
@@ -200,6 +220,10 @@ form {
   @media screen and (max-width: $bp-medium) {
     width: 60vw;
   }
+}
+
+.eye {
+  margin-left: -25px;
 }
 
 .tos {
@@ -217,17 +241,34 @@ form {
 
 footer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  font-size: 0.7rem;
+  grid-template-areas: "rights nav";
+  font-size: 0.8rem;
+
+  @media screen and (max-width: $bp-medium) {
+    grid-template-areas: "nav" "rights";
+  }
 }
 
 .rights {
-  grid-column: 1 / span 2;
+  grid-area: rights;
+
+  @media screen and (max-width: $bp-medium) {
+    text-align: center;
+  }
 }
 
 .bottom-nav {
-  grid-column: 4 / span 2;
+  grid-area: nav;
   display: flex;
   text-transform: uppercase;
-  justify-content: space-between;
+
+  li {
+    line-height: 2.5rem;
+    width: 25%;
+    text-align: center;
+
+    &:hover {
+      background: $blue;
+    }
+  }
 }
