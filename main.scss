@@ -17,7 +17,7 @@ $bp-medium: 768px;
 
 html {
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
@@ -27,6 +27,8 @@ body {
   height: 100%;
 
   display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     "header header header header header header"
     ". main main main main ."
@@ -93,6 +95,12 @@ a {
 nav {
   grid-area: header;
   grid-template-areas: "logo item item toggle-top";
+
+  ul {
+    @media screen and (max-width: $bp-small) {
+      display: none;
+    }
+  }
 }
 
 .top-nav {
@@ -108,7 +116,7 @@ nav {
     grid-area: item;
 
     @media screen and (max-width: $bp-small) {
-      top: 13%;
+      top: 15%;
     }
   }
 }
@@ -142,17 +150,17 @@ nav {
 .active {
   display: flex;
   flex-direction: column;
-  // margin-top: 0;
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 main {
   grid-area: main;
-  margin: 0 4rem;
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 3rem;
   grid-template-areas:
     "description form"
     "description form";
@@ -178,7 +186,7 @@ main {
     padding-top: 1rem;
 
     @media screen and (max-width: $bp-medium) {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 
@@ -263,9 +271,14 @@ footer {
   grid-template-areas: "rights nav nav";
   width: 100vw;
   font-size: 0.8rem;
+  align-items: center;
 
   @media screen and (max-width: $bp-medium) {
     grid-template-areas: "rights toggle-bottom";
+  }
+
+  @media screen and (max-width: 499px) {
+    align-items: end;
   }
 }
 
@@ -286,7 +299,7 @@ footer {
     }
 
     @media screen and (max-width: $bp-small) {
-      bottom: 13%;
+      bottom: 15%;
       text-transform: capitalize;
     }
   }
@@ -301,11 +314,3 @@ footer {
     padding-top: 4px;
   }
 }
-
-// .activity {
-//   display: flex;
-//   flex-direction: column;
-//   // margin-bottom: 3rem;
-//   width: 100%;
-//   margin: auto;
-// }
