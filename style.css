@@ -7,16 +7,17 @@
 
 html {
   box-sizing: border-box;
-  height: 100vh; }
+  height: 100%; }
 
 body {
   background: url(/cover.jpg) no-repeat center center fixed;
   background-size: cover;
   color: #fff;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; }
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: "header header header header header header" ". main main main main ." ". main main main main ." "footer footer footer footer footer footer"; }
   body:after {
     position: absolute;
     content: "";
@@ -30,75 +31,93 @@ body {
 
 nav,
 footer {
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   display: grid; }
   nav ul,
   footer ul {
     list-style: none;
     display: flex; }
-  nav a,
-  footer a {
-    color: #fff;
-    text-decoration: none; }
-
-nav {
-  grid-template-areas: "logo item item toggle"; }
-
-.top-nav {
-  height: 2rem;
-  align-items: flex-end;
-  line-height: 2.5rem; }
-  .top-nav__logo {
-    grid-area: logo;
-    font-weight: bold;
-    font-size: 1.7rem; }
-  .top-nav__items {
-    grid-area: item; }
-    .top-nav__items li {
+    nav ul li,
+    footer ul li {
       width: 25%;
-      text-align: center; }
-      .top-nav__items li:hover {
+      text-align: center;
+      padding: 0.5rem 0; }
+      nav ul li:hover,
+      footer ul li:hover {
         background: #2c99ed; }
     @media screen and (max-width: 600px) {
-      .top-nav__items {
+      nav ul,
+      footer ul {
         display: none;
         position: absolute;
-        top: 13%;
         left: 0px;
         right: 0px;
         z-index: 1;
         font-size: 1.6rem;
         background: gray;
         text-align: center; }
-        .top-nav__items li {
+        nav ul li,
+        footer ul li {
           width: 100%; }
-          .top-nav__items li:hover {
+          nav ul li:hover,
+          footer ul li:hover {
             background: #2c99ed; } }
-  .top-nav__toggle {
-    grid-area: toggle;
-    margin-left: auto;
-    font-size: 1.8rem;
-    width: 2.5rem;
-    text-align: center; }
-    .top-nav__toggle:hover {
-      cursor: pointer;
-      background: #2c99ed; }
-    @media screen and (min-width: 600px) {
-      .top-nav__toggle {
-        pointer-events: none; } }
+
+a {
+  color: #fff;
+  text-decoration: none; }
+
+nav {
+  grid-area: header;
+  grid-template-areas: "logo item item toggle-top"; }
+  @media screen and (max-width: 600px) {
+    nav ul {
+      display: none; } }
+
+.top-nav {
+  align-items: center; }
+  .top-nav__logo {
+    grid-area: logo;
+    font-weight: bold;
+    font-size: 1.7rem; }
+  .top-nav__items {
+    grid-area: item; }
+    @media screen and (max-width: 600px) {
+      .top-nav__items {
+        top: 15%; } }
+
+.nav-toggle {
+  margin-left: auto;
+  font-size: 1.8rem;
+  width: 2.5rem;
+  text-align: center;
+  margin-right: 0.5rem; }
+  .nav-toggle:hover {
+    cursor: pointer;
+    background: #2c99ed; }
+  @media screen and (min-width: 600px) {
+    .nav-toggle--first {
+      pointer-events: none; } }
+  @media screen and (min-width: 768px) {
+    .nav-toggle--second {
+      pointer-events: none; } }
+
+.top {
+  grid-area: toggle-top; }
 
 .active {
   display: flex;
   flex-direction: column;
-  margin-top: 0;
   width: 100%;
-  margin: auto; }
+  margin: auto;
+  position: relative; }
 
 main {
-  margin: 0 5rem;
+  grid-area: main;
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 3rem;
   grid-template-areas: "description form" "description form"; }
   @media screen and (max-width: 768px) {
     main {
@@ -116,10 +135,9 @@ main {
     padding-top: 1rem; }
     @media screen and (max-width: 768px) {
       .description__heading {
-        font-size: 1.5rem; } }
+        font-size: 2rem; } }
   .description__subtext {
     margin-top: 1rem;
-    margin-right: 2rem;
     font-weight: normal; }
     @media screen and (max-width: 768px) {
       .description__subtext {
@@ -176,27 +194,40 @@ form .label {
     margin-top: 0.5rem; }
 
 footer {
+  grid-area: footer;
   display: grid;
-  grid-template-areas: "rights nav";
-  font-size: 0.8rem; }
+  grid-template-areas: "rights nav nav";
+  width: 100vw;
+  font-size: 0.8rem;
+  align-items: center; }
   @media screen and (max-width: 768px) {
     footer {
-      grid-template-areas: "nav" "rights"; } }
+      grid-template-areas: "rights toggle-bottom"; } }
+  @media screen and (max-width: 499px) {
+    footer {
+      align-items: end; } }
 
 .rights {
   grid-area: rights;
-  line-height: 2.5rem; }
-  @media screen and (max-width: 768px) {
-    .rights {
-      text-align: center; } }
+  padding: 0.5rem; }
 
-.bottom-nav {
+.bottom-nav__items {
   grid-area: nav;
   display: flex;
-  text-transform: uppercase; }
-  .bottom-nav li {
-    line-height: 2.5rem;
-    width: 25%;
-    text-align: center; }
-    .bottom-nav li:hover {
-      background: #2c99ed; }
+  text-transform: uppercase;
+  justify-content: space-between; }
+  @media screen and (max-width: 768px) {
+    .bottom-nav__items {
+      display: none; } }
+  @media screen and (max-width: 600px) {
+    .bottom-nav__items {
+      bottom: 15%;
+      text-transform: capitalize; } }
+
+.bottom {
+  grid-area: toggle-bottom;
+  display: none; }
+  @media screen and (max-width: 768px) {
+    .bottom {
+      display: flex;
+      padding-top: 4px; } }

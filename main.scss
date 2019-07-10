@@ -1,7 +1,8 @@
+//Colors
 $overlay: #121215;
 $white: #fff;
 $blue: #2c99ed;
-
+//Breakpoints
 $bp-small: 600px;
 $bp-medium: 768px;
 
@@ -16,7 +17,7 @@ $bp-medium: 768px;
 
 html {
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
 }
 
 body {
@@ -25,9 +26,14 @@ body {
   color: $white;
   height: 100%;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "header header header header header header"
+    ". main main main main ."
+    ". main main main main ."
+    "footer footer footer footer footer footer";
 
   &:after {
     position: absolute;
@@ -44,39 +50,16 @@ body {
 
 nav,
 footer {
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   display: grid;
   ul {
     list-style: none;
     display: flex;
-  }
-  a {
-    color: $white;
-    text-decoration: none;
-  }
-}
-
-nav {
-  grid-template-areas: "logo item item toggle";
-}
-
-.top-nav {
-  height: 2rem;
-  align-items: flex-end;
-  line-height: 2.5rem;
-
-  &__logo {
-    grid-area: logo;
-    font-weight: bold;
-    font-size: 1.7rem;
-  }
-
-  &__items {
-    grid-area: item;
 
     li {
       width: 25%;
       text-align: center;
+      padding: 0.5rem 0;
 
       &:hover {
         background: $blue;
@@ -86,7 +69,6 @@ nav {
     @media screen and (max-width: $bp-small) {
       display: none;
       position: absolute;
-      top: 13%;
       left: 0px;
       right: 0px;
       z-index: 1;
@@ -103,38 +85,82 @@ nav {
       }
     }
   }
+}
 
-  &__toggle {
-    grid-area: toggle;
-    margin-left: auto;
-    font-size: 1.8rem;
-    width: 2.5rem;
-    text-align: center;
+a {
+  color: $white;
+  text-decoration: none;
+}
 
-    &:hover {
-      cursor: pointer;
-      background: $blue;
+nav {
+  grid-area: header;
+  grid-template-areas: "logo item item toggle-top";
+
+  ul {
+    @media screen and (max-width: $bp-small) {
+      display: none;
     }
+  }
+}
 
+.top-nav {
+  align-items: center;
+
+  &__logo {
+    grid-area: logo;
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+
+  &__items {
+    grid-area: item;
+
+    @media screen and (max-width: $bp-small) {
+      top: 15%;
+    }
+  }
+}
+
+.nav-toggle {
+  margin-left: auto;
+  font-size: 1.8rem;
+  width: 2.5rem;
+  text-align: center;
+  margin-right: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    background: $blue;
+  }
+  &--first {
     @media screen and (min-width: $bp-small) {
+      pointer-events: none;
+    }
+  }
+  &--second {
+    @media screen and (min-width: $bp-medium) {
       pointer-events: none;
     }
   }
 }
 
+.top {
+  grid-area: toggle-top;
+}
+
 .active {
   display: flex;
   flex-direction: column;
-  margin-top: 0;
   width: 100%;
   margin: auto;
+  position: relative;
 }
 
 main {
-  margin: 0 5rem;
+  grid-area: main;
+  align-items: center;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
+  grid-gap: 3rem;
   grid-template-areas:
     "description form"
     "description form";
@@ -160,7 +186,7 @@ main {
     padding-top: 1rem;
 
     @media screen and (max-width: $bp-medium) {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
 
@@ -240,36 +266,51 @@ form {
 }
 
 footer {
+  grid-area: footer;
   display: grid;
-  grid-template-areas: "rights nav";
+  grid-template-areas: "rights nav nav";
+  width: 100vw;
   font-size: 0.8rem;
+  align-items: center;
 
   @media screen and (max-width: $bp-medium) {
-    grid-template-areas: "nav" "rights";
+    grid-template-areas: "rights toggle-bottom";
+  }
+
+  @media screen and (max-width: 499px) {
+    align-items: end;
   }
 }
 
 .rights {
   grid-area: rights;
-  line-height: 2.5rem;
-
-  @media screen and (max-width: $bp-medium) {
-    text-align: center;
-  }
+  padding: 0.5rem;
 }
 
 .bottom-nav {
-  grid-area: nav;
-  display: flex;
-  text-transform: uppercase;
+  &__items {
+    grid-area: nav;
+    display: flex;
+    text-transform: uppercase;
+    justify-content: space-between;
 
-  li {
-    line-height: 2.5rem;
-    width: 25%;
-    text-align: center;
-
-    &:hover {
-      background: $blue;
+    @media screen and (max-width: $bp-medium) {
+      display: none;
     }
+
+    @media screen and (max-width: $bp-small) {
+      bottom: 15%;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.bottom {
+  grid-area: toggle-bottom;
+  display: none;
+
+  @media screen and (max-width: $bp-medium) {
+    display: flex;
+    padding-top: 4px;
   }
 }
