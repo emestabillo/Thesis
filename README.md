@@ -11,7 +11,7 @@ SCSS, BEM, Flexbox, Grid, Colorzilla (for color matching), npm (for Sass), Netli
 
 ### My notes:
 
-* I wasn’t able to get a dedicated 2-4hrs as required to create the project, but instead took about 12 hours before I submitted.
+* I wasn’t able to get a dedicated 2-4hrs as required to create the project, but instead took approximately 12 hours on-and-off before submission.
 
 * The toggle icon was curious: 
 It was included in the original design for (what I assumed was) the desktop. It’s usually seen in smaller devices. Since there were no specific instructions for it, I decided to disable pointer events for bigger screens.
