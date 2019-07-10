@@ -135,11 +135,6 @@ nav {
       pointer-events: none;
     }
   }
-  &--second {
-    @media screen and (min-width: $bp-medium) {
-      pointer-events: none;
-    }
-  }
 }
 
 .top {
@@ -309,7 +304,7 @@ footer {
   display: none;
 
   @media screen and (max-width: $bp-medium) {
-    display: flex;
+    display: block;
     padding-top: 4px;
   }
 }

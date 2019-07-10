@@ -98,9 +98,6 @@ nav {
   @media screen and (min-width: 600px) {
     .nav-toggle--first {
       pointer-events: none; } }
-  @media screen and (min-width: 768px) {
-    .nav-toggle--second {
-      pointer-events: none; } }
 
 .top {
   grid-area: toggle-top; }
@@ -229,5 +226,5 @@ footer {
   display: none; }
   @media screen and (max-width: 768px) {
     .bottom {
-      display: flex;
+      display: block;
       padding-top: 4px; } }
