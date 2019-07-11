@@ -3,7 +3,7 @@
 ### See it live here: https://em-estabillo-thesis.netlify.com/
 
 Front End challenge:
-Create a responsive HTML page based on the following design with no frontend frameworks or libraries (bootstrap, react, font awesome, etc.):
+Create a responsive HTML page based on the attached design without using any frontend frameworks or libraries (bootstrap, react, font awesome, etc.):
 
 ![design](design.png)
 

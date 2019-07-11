@@ -132,15 +132,6 @@ main {
   .description__heading {
     font-size: 3rem;
     padding-top: 1rem; }
-    @media screen and (max-width: 870px) {
-      .description__heading {
-        font-size: 2.7rem;
-        line-height: 1.2;
-        padding: 0.5rem; } }
-    @media screen and (max-width: 622px) {
-      .description__heading {
-        font-size: 2rem;
-        padding: 0.5rem; } }
     @media screen and (max-width: 465px) {
       .description__heading {
         font-size: 1.5rem; } }
@@ -176,9 +167,6 @@ form input {
   background: transparent; }
   form input::placeholder {
     color: #fff; }
-  @media screen and (min-width: 769px) and (max-width: 870px) {
-    form input {
-      height: 3.2rem; } }
 
 form button {
   background: #2c99ed; }
@@ -217,9 +205,6 @@ footer {
   @media screen and (max-width: 768px) {
     footer {
       grid-template-areas: "rights toggle-bottom"; } }
-  @media screen and (max-width: 499px) {
-    footer {
-      align-items: end; } }
 
 .rights {
   grid-area: rights;

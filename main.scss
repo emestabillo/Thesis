@@ -5,6 +5,7 @@ $blue: #2c99ed;
 //Breakpoints
 $bp-small: 600px;
 $bp-medium: 768px;
+$bp-xsmall: 465px;
 
 //Global reset including pseudo elements
 *,
@@ -179,18 +180,7 @@ main {
     font-size: 3rem;
     padding-top: 1rem;
 
-    @media screen and (max-width: 870px) {
-      font-size: 2.7rem;
-      line-height: 1.2;
-      padding: 0.5rem;
-    }
-
-    @media screen and (max-width: 622px) {
-      font-size: 2rem;
-      padding: 0.5rem;
-    }
-
-    @media screen and (max-width: 465px) {
+    @media screen and (max-width: $bp-xsmall) {
       font-size: 1.5rem;
     }
   }
@@ -236,10 +226,6 @@ form {
 
     &::placeholder {
       color: $white;
-    }
-
-    @media screen and (min-width: 769px) and (max-width: 870px) {
-      height: 3.2rem;
     }
   }
 
@@ -289,10 +275,6 @@ footer {
 
   @media screen and (max-width: $bp-medium) {
     grid-template-areas: "rights toggle-bottom";
-  }
-
-  @media screen and (max-width: 499px) {
-    align-items: end;
   }
 }
 
